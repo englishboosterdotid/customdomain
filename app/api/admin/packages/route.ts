@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ package: pkg }, { status: 201 })
   } catch (error) {
     if (error instanceof z.ZodError)
-      return NextResponse.json({ error: "Validasi gagal", details: error.errors }, { status: 400 })
+      return NextResponse.json({ error: "Validasi gagal", details: error.issues }, { status: 400 })
     if (error instanceof AppError)
       return NextResponse.json({ error: error.message }, { status: error.statusCode })
     return NextResponse.json({ error: "Internal server error" }, { status: 500 })

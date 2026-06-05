@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ domain }, { status: 201 })
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json({ error: "Validasi gagal", details: error.errors }, { status: 400 })
+      return NextResponse.json({ error: "Validasi gagal", details: error.issues }, { status: 400 })
     }
     if (error instanceof AppError) {
       return NextResponse.json({ error: error.message }, { status: error.statusCode })
@@ -95,7 +95,7 @@ export async function PATCH(request: NextRequest) {
     return NextResponse.json({ error: "Action tidak dikenal" }, { status: 400 })
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json({ error: "Validasi gagal", details: error.errors }, { status: 400 })
+      return NextResponse.json({ error: "Validasi gagal", details: error.issues }, { status: 400 })
     }
     if (error instanceof AppError) {
       return NextResponse.json({ error: error.message }, { status: error.statusCode })

@@ -22,7 +22,7 @@ APP_DIR="/var/www/toeflynk"        # App directory
 DB_NAME="toeflynk"                 # Database name
 DB_USER="toeflynk"                 # Database user
 DB_PASS=$(openssl rand -hex 16)    # Auto-generated strong password
-NODE_VERSION="20"                  # Node.js version (LTS recommended)
+NODE_VERSION="24"                  # Node.js version (LTS recommended)
 SYSTEMD_SERVICE="toeflynk"         # Systemd service name
 
 # ============================================

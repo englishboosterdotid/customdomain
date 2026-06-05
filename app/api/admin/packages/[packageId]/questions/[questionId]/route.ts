@@ -6,7 +6,7 @@ import { AppError } from "@/lib/shared/errors"
 
 const UpdateQuestionSchema = z.object({
   audioKey: z.string().nullable().optional(),
-  content: z.record(z.unknown()).optional(),
+  content: z.unknown().optional(),
   options: z.array(z.object({
     key: z.enum(["A", "B", "C", "D"]),
     text: z.string().min(1),
@@ -26,7 +26,7 @@ export async function PATCH(request: NextRequest, { params }: Params) {
     return NextResponse.json({ question })
   } catch (error) {
     if (error instanceof z.ZodError)
-      return NextResponse.json({ error: "Validasi gagal", details: error.errors }, { status: 400 })
+      return NextResponse.json({ error: "Validasi gagal", details: error.issues }, { status: 400 })
     if (error instanceof AppError)
       return NextResponse.json({ error: error.message }, { status: error.statusCode })
     return NextResponse.json({ error: "Internal server error" }, { status: 500 })

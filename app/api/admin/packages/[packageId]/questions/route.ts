@@ -16,7 +16,7 @@ const CreateQuestionSchema = z.object({
     "fill_blank", "identify_error", "reading_comp",
   ]),
   audioKey: z.string().optional(),
-  content: z.record(z.unknown()),
+  content: z.unknown(),
   options: z.array(QuestionOptionSchema).min(2).max(4),
   correctAnswer: z.enum(["A", "B", "C", "D"]),
 })
@@ -49,7 +49,7 @@ export async function POST(request: NextRequest, { params }: Params) {
     return NextResponse.json({ question }, { status: 201 })
   } catch (error) {
     if (error instanceof z.ZodError)
-      return NextResponse.json({ error: "Validasi gagal", details: error.errors }, { status: 400 })
+      return NextResponse.json({ error: "Validasi gagal", details: error.issues }, { status: 400 })
     if (error instanceof AppError)
       return NextResponse.json({ error: error.message }, { status: error.statusCode })
     return NextResponse.json({ error: "Internal server error" }, { status: 500 })

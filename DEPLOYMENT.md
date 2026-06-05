@@ -51,7 +51,7 @@ sudo apt install -y curl git nginx certbot python3-certbot-nginx postgresql post
 
 ### 3. Install Node.js and pnpm
 ```bash
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo bash -
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo bash -
 sudo apt install -y nodejs
 sudo npm install -g pnpm@10
 ```
@@ -59,7 +59,7 @@ sudo npm install -g pnpm@10
 ### 4. Setup PostgreSQL
 ```bash
 # Create database user
-sudo -u postgres psql -c "CREATE USER toeflynk WITH PASSWORD 'your-strong-password';"
+sudo -u postgres psql -c "CREATE USER toeflynk WITH PASSWORD 'yourStrongPassword';"
 
 # Create database
 sudo -u postgres psql -c "CREATE DATABASE toeflynk OWNER toeflynk;"
@@ -75,7 +75,7 @@ sudo mkdir -p /var/www/toeflynk
 sudo chown -R $USER:$USER /var/www/toeflynk
 
 # Upload your app files here
-# Or clone from git: git clone https://github.com/your-repo.git /var/www/toeflynk
+# Or clone from git: git clone https://github.com/englishboosterdotid/customdomain.git /var/www/toeflynk
 
 # Install dependencies
 cd /var/www/toeflynk

@@ -59,7 +59,6 @@ export interface CreateOfferingInput {
 }
 
 export interface MidtransChargeResult {
-  orderId: string
   token: string        // Snap token untuk frontend
   redirectUrl: string  // Fallback redirect URL
 }
